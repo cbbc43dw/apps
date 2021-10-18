@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simulador de uso de capas</title>
+	<link href="img/cbbc.ico" rel="shortcut icon" type="image/x-icon">
+	<meta charset=utf-8>
+	<!--Caracteristicas para mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="mois.min.css">
+	<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+	<script type="text/javascript" src="jquery-2.1.4.js"></script>
+	<script src="jquery.mobile-1.4.5.min.js"></script>	
+	<script type="text/javascript" src="jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script>
+	<style>
+		#laimg
+		{position: relative	;
+		 left: 0px;
+		  top: 0px;
+		  height: 400px;
+		  z-index: 0;}
+	
+		#Desierto{
+		  position: absolute	;
+		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 10;
+		}
+		#Hierba{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 9;
+		}
+		#Palma{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 8;
+		}
+		#Agua{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 7;
+		}
+		#Estanque{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 6;
+		}
+		#Escorpion{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 5;
+		}
+		#Hombre{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 4;
+		}
+		#Camello{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 3;
+		}
+		#Letrero{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 2;
+		}
+		#Rocas{
+		  position: absolute;
+		  		  margin-left:auto;
+			margin-right:auto;
+			left:0;
+			right:0;
+		  z-index: 1;
+		}
+		
+ 	</style>
+	<script type="text/javascript">
+		$( document ).on( 'pageinit', function() {
+		//$(document).ready(function(){
+			$('#widget').draggable();
+			$( "#lst" ).listview( "refresh" );
+			$( "#lst" ).sortable();
+			$( "#lst" ).disableSelection();
+			$( "#lst" ).on( "sortstop", function() {
+			event.handled =false;
+				$( "#lst" ).listview( "refresh" );
+				cola();
+			});
+			$('li').click(function(){
+				if (muestra_oculta($(this).text()))
+					{	$(this).css('background-color', '');}
+				else
+					{	$(this).css('background-color', 'mistyrose');}
+				muestra_oculta($(this).attr("id")+"v");
+			});
+		}); 
+		function cola()
+		{ i=11; //modo pila, para modo cola usar i=0;
+		  $("li").each(function(){
+				i--; //modo pila, para modo cola usar i++;
+				document.getElementById($(this).text()).style.zIndex = i;
+		   });
+		}
+		
+		function muestra_oculta(id){
+			if (document.getElementById){ //se obtiene el id
+				var el = document.getElementById(id),cambia; //se define la variable "el" igual a nuestro div
+				cambia=(el.style.display == 'none') ? true : false;
+				el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+			}
+			return cambia;
+		}
+	</script>
+</head>
+<body><!---->
+	<div data-role="page"  id="portada">
+		<div data-role="header" data-theme="d" data-position="fixed">
+				<h1>Photoshop: Capas</h1>
+        </div>
+		<div data-role="content"> 
+			<div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+				<div data-role="collapsible" data-collapsed="false">
+				   <h3>Instrucciones</h3>
+					<p>* Para cambiar el orden de las capas: Arrastre y suelte la capa en la posición deseada.</p>
+					<p>* Para ocultar una capa haga un click sobre ella, el fondo del la capa cambiará a una tonalidad roja y desaparecerá el ojo para indicar que no es visible.</p>
+					<p>* Los cambios se aplican automaticamente sobre la imagen.</p>
+					<p>* No se puede cambiar las imagenes ya que esta app solo demuestra el manejo, no es un editor grafico.</p>
+					<p>* La velocidad de su internet afecta la presentacion de las imagenes.</p>
+                </div>
+				   	<div data-role="collapsible">
+						<h3>Capas</h3>
+						<ul data-role="listview" data-inset="true" data-theme="a" id="lst">
+							<li id="op1"><img src="img/cdesierto-mix.png" height="40px">Desierto</img><div id="op1v"><img src="img/vsi.png" height="30px"></div></li>
+							<li id="op2"><img src="img/chierba-mix.png" height="40px">Hierba</img><div id="op2v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op3"><img src="img/cpalma-mix.png" height="40px">Palma</img><div id="op3v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op4"><img src="img/cagua-mix.png" height="40px">Agua</img><div id="op4v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op5"><img src="img/cestanque-mix.png" height="40px">Estanque</img><div id="op5v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op6"><img src="img/cescorpion-mix.png" height="40px">Escorpion</img><div id="op6v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op7"><img src="img/chombre-mix.png" height="40px">Hombre</img><div id="op7v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op8"><img src="img/ccamello-mix.png" height="40px">Camello</img><div id="op8v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op9"><img src="img/cletrero-mix.png" height="40px">Letrero</img><div id="op9v"><img src="img/vsi.png" height="30px"></li>
+							<li id="op10"><img src="img/crocas-mix.png" height="40px">Rocas</img><div id="op10v"><img src="img/vsi.png" height="30px"></li>
+						</ul>
+                  </div>
+				</div>
+				<div id="laimg">
+						<div id="Desierto">
+							<img src="img/cdesierto-mix.png"  width=100%>
+						</div>
+						<div id="Hierba">
+							<img src="img/chierba-mix.png" width=100%>
+						</div> 
+						<div id="Palma">
+							<img src="img/cpalma-mix.png" width=100% >
+						</div>
+						<div id="Agua">
+							<img src="img/cagua-mix.png"width=100%  >
+						</div>
+						<div id="Estanque">
+							<img src="img/cestanque-mix.png"width=100%  >
+						</div>
+						<div id="Escorpion">
+							<img src="img/cescorpion-mix.png" width=100% >
+						</div>
+						<div id="Hombre">
+							<img src="img/chombre-mix.png" width=100% >
+						</div>
+						<div id="Camello">
+							<img src="img/ccamello-mix.png" width=100% >
+						</div>
+						<div id="Letrero">
+							<img src="img/cletrero-mix.png" width=100% >
+						</div>
+						<div id="Rocas">
+							<img src="img/crocas-mix.png" width=100% >
+						</div>
+				</div>
+		</div><!-- content -->
+		<div data-role="footer" data-theme="d" data-position="fixed">
+			<h3>CBBC  - <img src="inetuser.png" height=20px align="top"></h3>
+		</div> 
+	</div><!-- portada -->
+</body>
+</html>
+
