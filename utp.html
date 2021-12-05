@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Herramientas de apoyo</title>
+	<!--<link href="cbbc.ico" rel="shortcut icon" type="image/x-icon"/>-->
+	<link rel="shortcut icon" sizes="192x192" href="img/inetcbbc.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="mobile-web-app-capable" content="yes"> 
+
+	<link rel="stylesheet" href="css/mois.min.css">
+	<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+	<script type="text/javascript" src="jquery-2.1.4.js"></script>
+	<script src="jquery.mobile-1.4.5.min.js"></script>	
+	<script type="text/javascript" src="jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery.ui.touch-punch.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<style>
+	:root 
+	{
+		--pder:15em;
+		--pizq:15em;
+		--ptop:10px;
+		--apleft:28px;
+		--bpleft:200px;
+	}
+		/*Cambia el tamaÃƒÂ±o de los panales*/
+
+		/*Izquierdo*/
+		.ui-panel 
+		{
+			width: var(--pizq);
+		}
+		.ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay, 
+		.ui-panel-animate.ui-panel-position-left.ui-panel-display-push 
+		{
+			-webkit-transform: translate3d(-var(--pizq), 0, 0);
+			-moz-transform: translate3d(-var(--pizq), 0, 0);
+			transform: translate3d(-var(--pizq), 0, 0)
+		}
+		.ui-panel-animate.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-reveal, 
+		.ui-panel-animate.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push, 
+		.ui-panel-animate.ui-panel-content-wrap-position-left.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal, 
+		.ui-panel-animate.ui-panel-content-wrap-position-left.ui-panel-content-wrap-open.ui-panel-content-wrap-display-push 
+		{
+			-webkit-transform: translate3d(var(--pizq), 0, 0);
+			-moz-transform: translate3d(var(--pizq), 0, 0);
+			transform: translate3d(var(--pizq), 0, 0)
+		}
+		.ui-panel-animate.ui-panel-page-content-position-left
+		{
+			-webkit-transform: translate3d(var(--pizq), 0, 0);
+			-moz-transform: translate3d(var(--pizq), 0, 0);
+			transform: translate3d(var(--pizq), 0, 0);
+		}
+		
+		/*Derecho*/
+		.ui-panel.ui-panel-position-right 
+		{
+			width: var(--pder);
+		}
+		.ui-panel-animate.ui-panel-position-right.ui-panel-display-overlay, .ui-panel-animate.ui-panel-position-right.ui-panel-display-push {
+			-webkit-transform: translate3d(var(--pder), 0, 0);
+			-moz-transform: translate3d(var(--pder), 0, 0);
+			transform: translate3d(var(--pder), 0, 0)
+		}
+		.ui-panel-animate.ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-reveal, 
+		.ui-panel-animate.ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push, 
+		.ui-panel-animate.ui-panel-content-wrap-position-right.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal, 
+		.ui-panel-animate.ui-panel-content-wrap-position-right.ui-panel-content-wrap-open.ui-panel-content-wrap-display-push 
+		{
+			-webkit-transform: translate3d(-var(--pder), 0, 0);
+			-moz-transform: translate3d(-var(--pder), 0, 0);
+			transform: translate3d(-var(--pder), 0, 0)
+		}
+
+		/*Ambos*/
+		.ui-panel.ui-panel-closed 
+		{
+			width: 0;
+		}
+
+        #portada 
+		{
+			background-image:url('img/utp/madera.png');
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        }				
+		#capa1 
+		{
+			width: 400px;
+			height: 100px;
+			border: solid 5px #00ff00;
+			position: relavite;
+			top: 10px;
+			left: 10px;
+		}
+		#capa2 
+		{
+			!border: solid 5px #0000ff;
+			width: 300px;
+			height: 500px;
+			!position: absolute;
+			top: 50px;
+		}
+		#capa3 
+		{
+			width: 200px;
+			height: 500px;
+			position:absolute;
+			top: 50px;
+			left: 10px;
+    	}
+    	#prever 
+		{
+			width: 198px;
+			height: 498px;
+			position:absolute;
+			top: 0px;
+			left: 75px;
+			z-index:0;
+		}
+		#apin1
+		{   top:var(--ptop);
+			left:var(--apleft);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vca.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#apin2
+		{	left:calc(var(--apleft) + 13px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcba.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#apin3
+		{	left:calc(var(--apleft) + 26px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcn.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#apin4
+		{	left:calc(var(--apleft) + 39px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcbn.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#apin5
+		{	left:calc(var(--apleft) + 52px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcv.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#apin6
+		{	left:calc(var(--apleft) + 65px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcbv.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#apin7
+		{   left:calc(var(--apleft) + 78px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcc.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#apin8
+		{	left:calc(var(--apleft) + 91px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcbc.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#acca1
+		{	left:calc(var(--apleft) - 15px);
+			width:130px;
+			height:280px;
+			position:absolute;
+			top:198px;
+			z-index:2;
+			background-image:url("img/utp/cv1.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			display:none;
+		}
+		#acca2
+		{   left:calc(var(--apleft) - 15px);
+			width:130px;
+			height:280px;
+			position:absolute;
+			top:193px;
+			z-index:0;
+			background-image:url("img/utp/cv2.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			display:none;
+		}
+		#aconector
+		{	left:calc(var(--apleft) - 27px);
+			width:154px;
+			height:280px;
+			position:absolute;
+			top:8px;
+			z-index:3;
+			background-image:url("img/utp/rj452.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			display:none;
+		}
+		#bpin1
+		{   top:var(--ptop);
+			left:var(--bpleft);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vca.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#bpin2
+		{	left:calc(var(--bpleft) + 13px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcba.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#bpin3
+		{	left:calc(var(--bpleft) + 26px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcn.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#bpin4
+		{	left:calc(var(--bpleft) + 39px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcbn.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#bpin5
+		{	left:calc(var(--bpleft) + 52px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcv.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#bpin6
+		{	left:calc(var(--bpleft) + 65px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcbv.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#bpin7
+		{   left:calc(var(--bpleft) + 78px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcc.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#bpin8
+		{	left:calc(var(--bpleft) + 91px);
+			top:var(--ptop);
+			width:10px;
+			height:200px;
+			border: solid 1px  #CCC;
+			position:absolute;
+			background-image:url("img/utp/vcbc.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			z-index:1;
+			display:none;
+		}
+		#bcca1
+		{	left:calc(var(--bpleft) - 15px);
+			width:130px;
+			height:280px;
+			position:absolute;
+			top:198px;
+			z-index:2;
+			background-image:url("img/utp/cv1.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			display:none;
+		}
+		#bcca2
+		{   left:calc(var(--bpleft) - 15px);
+			width:130px;
+			height:280px;
+			position:absolute;
+			top:193px;
+			z-index:0;
+			background-image:url("img/utp/cv2.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			display:none;
+		}
+		#bconector
+		{	left:calc(var(--bpleft) - 27px);
+			width:154px;
+			height:280px;
+			position:absolute;
+			top:8px;
+			z-index:3;
+			background-image:url("img/utp/rj452.png");
+			background-repeat:no-repeat;background-size: 100% 100%;
+			display:none;
+		}		
+		.hijo 
+		{
+			margin: 0 auto;
+		}
+		.imgcnt
+		{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.swal-modal 
+		{
+			!background-color: rgba(238,214,196,0.75);
+			border: 3px solid #6B4F4F;
+		}
+	</style>
+	<script type="text/javascript">	
+	//Variables globales en la app
+		var snd = new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");  
+		var nivel=0;
+		var vcorte=0,vrj45=1;
+		var vnrm1 = [],vnrm2=[];
+		
+		$( document ).on( 'pageinit', function() {
+		//$(document).ready(function(){
+			//Drag and drop norma1
+			$('#widget').draggable();
+			$( "#lst" ).listview( "refresh" );
+			$( "#lst" ).sortable();
+			$( "#lst" ).disableSelection();
+			$( "#lst" ).on( "sortstop", function() {
+				event.handled =false;
+				$( "#lst" ).listview( "refresh" );
+				colores(1);
+			});
+			i=0;
+			$("#lst li").each(function(){
+					vnrm1[i]=$(this).text();
+					i++;
+			});
+			//Drag and drop norma2
+			$( "#lst2" ).listview( "refresh" );
+			$( "#lst2" ).sortable();
+			$( "#lst2" ).disableSelection();
+			$( "#lst2" ).on( "sortstop", function() {
+				event.handled =false;
+				$( "#lst2" ).listview( "refresh" );
+				colores(2);
+			});
+			i=0;
+			$("#lst2 li").each(function(){
+					vnrm2[i]=$(this).text();
+					i++;
+			});
+			//ocultar opciones del panel izq
+			$("#norma1").css("display", "none");
+			$("#norma2").css("display", "none");
+			$("#rj45").css("display", "none");
+			
+			//estas lineas no funcionan
+			$( "#clst" ).listview( "refresh" );
+			$( "#clst" ).enableSelection();
+			$("#clst li").click(function(){
+				$(this).css('background-color', 'red');
+			});
+			//
+			instruciones();
+			console.log(vnrm1);
+			console.log(vnrm2);
+		});
+		function instruciones()
+		{
+			swal("Instrucciones", "Debe seguir en orden los pasos para poder completar con éxito la elaboración de un patch cord (cable) funcional. Se inicia el proceso en el panel de la derecha.\n\n"+
+			"Panel derecho [Engrane]:\n*Aquí debe seguir en orden los pasos para preparar el cable UTP.\n"+
+			"Al finalizar estos pasos apareceran las dos puntas del cable y deberás seleccionar la norma a usar en cada una.\n\n"+
+			"Panel izquierdo [Lápiz]:\n*Aquí debe seleccionar la normas para cada punta del cable y acomodar los colores de acuerdo a dichas normas.\n"+
+			"*Finalmente debe seleccionar cómo se pondrá el conector RJ45.","info");
+		
+		}
+		function cimg()
+		{	if ($("#flipx").val()  == "off")
+				{  	$("#imgx").attr("src","img/utp/rj451.png");
+					vrj45=1;
+					$('#aconector').css('background-image', 'url(img/utp/rj451.png)');
+					$('#bconector').css('background-image', 'url(img/utp/rj451.png)');
+				}
+			else
+				{  	$("#imgx").attr("src","img/utp/rj452.png"); 
+					vrj45=2;
+					$('#aconector').css('background-image', 'url(img/utp/rj452.png)');
+					$('#bconector').css('background-image', 'url(img/utp/rj452.png)');
+				}
+			if (nivel>3)
+				{	$("#aconector").css("display", "block");
+					$("#bconector").css("display", "block");
+				}
+		};
+		function imgcol(cual)
+		{ 	if (cual=="Azul") return "img/utp/vca.png";
+			if (cual=="Blanco-Azul") return "img/utp/vcba.png";
+			if (cual=="Verde") return "img/utp/vcv.png";
+			if (cual=="Blanco-Verde") return "img/utp/vcbv.png";
+			if (cual=="Naranja") return "img/utp/vcn.png";
+			if (cual=="Blanco-Naranja") return "img/utp/vcbn.png";
+			if (cual=="Cafe") return "img/utp/vcc.png";
+			if (cual=="Blanco-Cafe") return "img/utp/vcbc.png";
+			return("img/utp/cv1.png"); 
+		};
+		function colores(cual)
+		{ 	$("#aconector").css("display", "none");
+			$("#bconector").css("display", "none");
+			i=0;
+			if(cual==1)
+			{
+				$("#lst li").each(function(){
+					vnrm1[i]=$(this).text();
+					i++; 
+					$('#apin'+i).css('background-image', 'url('+imgcol($(this).text()) +')');
+					
+				});
+			}
+			else
+			{
+				$("#lst2 li").each(function(){
+					vnrm2[i]=$(this).text();
+					i++; 
+					$('#bpin'+i).css('background-image', 'url('+imgcol($(this).text()) +')');
+				});
+		   }
+		   
+		};
+
+		function paso1(cual)
+		{ 	if (nivel!=0)
+				{
+				swal("Oops!", "!Ya realizaste este paso!", "info");
+				//alert("Ya realizaste este paso");
+				}
+			else
+			{
+				$("#aver").attr("src","img/utp/c-2.png");
+				vcorte=cual;
+				nivel++;			
+			}
+		}	
+		function paso2()
+		{ 	if(nivel<1)
+			{
+				snd.play();
+				swal("Oops!", "Tienes que realizar los pasos previos antes.", "error");
+				//alert("Tienes que realizar los pasos previos antes.");
+			}
+			else if (nivel>1)
+			{
+				swal("Oops!", "!Ya realizaste este paso!", "info");
+			}
+			else
+			{
+			$("#aver").attr("src","img/utp/c-3.png");
+			nivel++;
+			}
+		}	
+		function paso3()
+		{ 	if(nivel<2)
+			{
+				snd.play();
+				swal("Oops!", "Tienes que realizar los pasos previos antes.", "error");
+			}
+			else if (nivel>2)
+			{
+				swal("Oops!", "!Ya realizaste este paso!", "info");
+			}
+			else
+			{
+		
+				$("#aver").attr("src","img/utp/c-4.png");
+				nivel++;
+			}
+		}	
+		function paso4()
+		{ 	if(nivel<3)
+			{
+				snd.play();
+				swal("Oops!", "Tienes que realizar los pasos previos antes.", "error");
+			}
+			else if (nivel>3)
+			{
+				swal("Oops!", "!Ya realizaste este paso!", "info");
+			}
+			else
+			{	//ocultar punta unica
+				$("#aver").attr("src","img/utp/c-5.png");
+				$("#prever").css("display", "none");
+				//Punta 1
+				$("#acca2").css("display", "block");
+				$("#apin1").css("display", "block");
+				$("#apin2").css("display", "block");
+				$("#apin3").css("display", "block");
+				$("#apin4").css("display", "block");
+				$("#apin5").css("display", "block");
+				$("#apin6").css("display", "block");
+				$("#apin7").css("display", "block");
+				$("#apin8").css("display", "block");
+				$("#acca1").css("display", "block");
+				//Punta 2
+				$("#bcca2").css("display", "block");
+				$("#bpin1").css("display", "block");
+				$("#bpin2").css("display", "block");
+				$("#bpin3").css("display", "block");
+				$("#bpin4").css("display", "block");
+				$("#bpin5").css("display", "block");
+				$("#bpin6").css("display", "block");
+				$("#bpin7").css("display", "block");
+				$("#bpin8").css("display", "block");
+				$("#bcca1").css("display", "block");
+				//Normas
+				$("#norma1").css("display", "block");
+				$("#norma2").css("display", "block");
+				$("#rj45").css("display", "block");
+				
+				nivel++;
+				}
+				
+			
+		};	
+		//Estas funciones producen sonidos, una con wav y otra con audio en base64
+		//el problema es que cada que se llama crea una etiqueta audio
+		function suena(que) 
+		{ 	var obj = document.createElement('audio');
+			obj.src = 'media/'+que+'.wav'; 
+			obj.play();
+		};
+		
+		function beep() 
+		{
+			var snd = new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");  
+			snd.play();
+		}
+
+		
+	</script>
+</head>
+<body>
+	<div data-role="page" id="portada">
+		<div data-role="header" data-theme="d">
+			<a href="#panel1" data-role="button" data-icon="edit" data-iconpos="notext" class="ui-btn-left">Proceso</a>
+			<a href="#panel2" data-role="button" data-icon="gear" data-iconpos="notext" class="ui-btn-right">Herramientas</a>
+			<h1>TIC 3: Redes</h1>
+		</div>
+		<!--Definicion de paneles -->	
+		<!--Izquierdo-->	
+		<div data-role="panel" id="panel1" data-display="overlay" data-theme="d" data-content-theme="d"> 
+			<div data-role="header" data-theme="d">
+				<a href="#portada" data-rel="close" data-role="button" data-icon="arrow-l" data-iconpos="notext" class="ui-btn-right">Proceso</a>
+				<h1>Protocolo</h1>
+			</div>
+			<div data-role="content">
+				<div data-role="collapsible-set" data-theme="d" data-content-theme="d" data-inset="false">
+					<div data-role="collapsible" data-theme="d" id="norma1">
+						<h3>Norma punta 1</h3>
+						<ul data-role="listview" data-inset="true" data-theme="a" id="lst" style="font-size:12px;">
+							Para cambiar el orden de los cables: Arrastre y suelte la color del cable en la posiciÃƒÆ’Ã‚Â³n deseada.<br>
+							Pin 1
+							<li id="op1" style="background-image: url('img/utp/ca.png'); background-repeat: no-repeat;"><br>Azul</li>
+							<li id="op2" style="background-image: url('img/utp/cba.png'); background-repeat: no-repeat;"><br>Blanco-Azul</li>
+							<li id="op3" style="background-image: url('img/utp/cv.png');background-repeat: no-repeat;"><br>Verde</li>
+							<li id="op4" style="background-image: url('img/utp/cbv.png');background-repeat: no-repeat;"><br>Blanco-Verde</li>
+							<li id="op5" style="background-image: url('img/utp/cn.png'); background-repeat: no-repeat;"><br>Naranja</li>
+							<li id="op6" style="background-image: url('img/utp/cbn.png'); background-repeat: no-repeat;"><br>Blanco-Naranja</li>
+							<li id="op7" style="background-image: url('img/utp/cc.png'); background-repeat: no-repeat;"><br>Cafe</li>
+							<li id="op8" style="background-image: url('img/utp/cbc.png'); background-repeat: no-repeat;"><br>Blanco-Cafe</li>
+							Pin 8
+						</ul>
+					</div>
+					<div data-role="collapsible" data-theme="d" id="norma2">
+						<h3>Norma punta 2</h3>
+						<ul data-role="listview" data-inset="true" data-theme="a" id="lst2" style="font-size:12px;">
+							Para cambiar el orden de los cables: Arrastre y suelte la color del cable en la posici&oacute;n deseada.<br>
+							Pin 1
+							<li id="op1b" style="background-image: url('img/utp/ca.png'); background-repeat: no-repeat;"><br>Azul</li>
+							<li id="op2b" style="background-image: url('img/utp/cba.png'); background-repeat: no-repeat;"><br>Blanco-Azul</li>
+							<li id="op3b" style="background-image: url('img/utp/cv.png');background-repeat: no-repeat;"><br>Verde</li>
+							<li id="op4b" style="background-image: url('img/utp/cbv.png');background-repeat: no-repeat;"><br>Blanco-Verde</li>
+							<li id="op5b" style="background-image: url('img/utp/cn.png'); background-repeat: no-repeat;"><br>Naranja</li>
+							<li id="op6b" style="background-image: url('img/utp/cbn.png'); background-repeat: no-repeat;"><br>Blanco-Naranja</li>
+							<li id="op7b" style="background-image: url('img/utp/cc.png'); background-repeat: no-repeat;"><br>Cafe</li>
+							<li id="op8b" style="background-image: url('img/utp/cbc.png'); background-repeat: no-repeat;"><br>Blanco-Cafe</li>
+							Pin 8
+						</ul>
+					</div>
+
+					<div data-role="collapsible" data-theme="d" id="rj45">
+						<h3>Conector RJ45</h3>
+						<p><label id="elfd">Posicion</label></p>
+						<img src="img/utp/rj451.png" id="imgx" width=100%>
+						<label for="flipx">Selecciona vista</label>
+						<select name="flipx" id="flipx" data-role="flipswitch" onchange="cimg()">
+							<option selected value="off">1</option>
+							<option value="on">2</option>
+						</select> 
+					</div>
+					<div data-role="collapsible" data-theme="d">
+						<h3>Cribar Cable</h3>
+						
+					</div>
+				</div>
+			</div>
+			<div dat-role="footer">
+			</div>
+		</div>
+	
+		<!--Derecho-->  
+		<div data-role="panel" id="panel2" data-display="overlay"  data-position="right" data-theme="b" > 
+			<div data-role="header" data-theme="b">
+				<a href="#portada" data-rel="close" data-role="button" data-icon="arrow-r" data-iconpos="notext" class="ui-btn-left">Tools</a>
+				<h1>UTP</h1>
+			</div>
+			<div data-role="content">
+			<div data-role="collapsible-set" data-theme="d" data-content-theme="d" data-inset="false">
+					<div data-role="collapsible" data-theme="d">
+						<h3>Pelar cable</h3>
+						<ul data-role="listview" data-inset="false" data-theme="a" id="clst" style="font-size:14px;">
+							<li id="cm1"><a href="#portada" data-rel="close" onclick="paso1(1)">1 cm</a></li>
+							<li id="cm2"><a href="#portada" data-rel="close" onclick="paso1(1.5)">1.5 cm</a></li>
+							<li id="cm3"><a href="#portada" data-rel="close" onclick="paso1(2)">2 cm</a></li>
+							<li id="cm4"><a href="#portada" data-rel="close" onclick="paso1(2.5)">2.5 cm</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible" data-theme="d">
+						<h3>Cortar centro</h3>
+						<ul data-role="listview" data-inset="true" data-theme="a" id="dlst" style="font-size:14px;">
+							<li id="hule"><a href="#portada" data-rel="close" onclick="paso2()">Remover centro</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible" data-theme="d">
+						<h3>Alisar cable</h3>
+						<ul data-role="listview" data-inset="true" data-theme="a" id="elst" style="font-size:14px;">
+							<li id="liso"><a href="#portada" data-rel="close" onclick="paso3()">Alisar</a></li>
+						</ul>
+					</div>
+					<div data-role="collapsible" data-theme="d">
+						<h3>Recortar puntas</h3>
+					<ul data-role="listview" data-inset="true" data-theme="a" id="flst" style="font-size:14px;">
+							<li id="parejo"><a href="#portada" data-rel="close" onclick="paso4()">Emparejar</a></li>
+						</ul>					
+					</div>					
+			
+			
+			
+				<div data-role="collapsible" data-theme="d"  onclick="snd.play();">
+					<h3><img src="img/utp/corte.png" height=25px align="absmiddle"> Cortar</h3>
+					<ul data-role="listview" data-inset="true" data-theme="c" id="lst1">
+						
+						<li><a href="#norma">Reiniciar</a></li>
+					</ul>
+				</div>
+				</div>
+			</div>
+			<div dat-role="footer">
+			</div>
+		</div>	
+		<!--==========================================================-->
+		<div data-role="main" class="ui-content">
+			<div id="capa3">
+				<div id="prever">
+					<img id="aver" src="img/utp/c-1.png" height="90%" class="imgcnt" >
+				</div>
+				<!--Punta 1-->
+				<div id="apin1">
+				</div>
+				<div id="apin2">
+				</div>
+				<div id="apin3">
+				</div>
+				<div id="apin4">
+				</div>
+				<div id="apin5">
+				</div>
+				<div id="apin6">
+				</div>
+				<div id="apin7">
+				</div>
+				<div id="apin8">
+				</div>
+				<div id="acca1">
+				<br>
+				<center><b>punta 1</b></center>
+				</div>
+				<div id="acca2">
+				</div>
+				<div id="aconector">
+				</div>
+				<!--Punta 2-->
+				<div id="bpin1">
+				</div>
+				<div id="bpin2">
+				</div>
+				<div id="bpin3">
+				</div>
+				<div id="bpin4">
+				</div>
+				<div id="bpin5">
+				</div>
+				<div id="bpin6">
+				</div>
+				<div id="bpin7">
+				</div>
+				<div id="bpin8">
+				</div>
+				<div id="bcca1">
+				<br>
+				<center><b>punta 2</b></center>
+				</div>
+				<div id="bcca2">
+				</div>
+				<div id="bconector">
+				</div>
+			</div>	
+		</div>			
+		<div data-role="footer" data-theme="d" data-position="fixed">
+			<h3><img src="img/inetuser.png" height=20px align="top"> CBBC</h3>
+		</div>
+	</div>
+</body>
+</html>
+<!--	
+ $('#changeMe').css('background-image', 'url(http://placehold.it/200x200/ff0000)');
+-->
+
