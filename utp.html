@@ -628,10 +628,13 @@
 			
 		};	
 		function soniguales()
-		{for(i=0;i<9;i++)
+		{for (var i = 0; i < 8; i++)
 			{if(vnrm1[i]!=vnrm2[i])
-			{ return false}}
-		return true;
+			{ console.log(i);
+			return false;}
+			else
+			{
+		return true;}}
 		};
 		function quenorma(a)
 		{console.log(a);
@@ -659,7 +662,8 @@
 			}
 			else
 			{ 	var msg="!Cable terminado!";
-				msg=msg+"\n"+(soniguales())?"Puntas iguales.":"Puntas diferentes";
+				msg=msg+"\n"+(soniguales()?"Puntas iguales.":"Puntas diferentes");
+				console.log(soniguales());
 				msg=msg+"\n"+"Norma Punta 1:"+quenorma(vnrm1);
 				msg=msg+"\n"+"Norma Punta 2:"+quenorma(vnrm2);
 				
