@@ -669,6 +669,14 @@
 				msg2=msg2+"\n"+"Norma Punta 1:"+vn1;
 				msg2=msg2+"\n"+"Norma Punta 2:"+vn2;
 				
+				if(vrj45==1)
+				{
+				msg1="Error de RJ45";
+				msg2="Se colocó el conector RJ45 de manera erronéa";
+				msg3="error";
+				}
+				else{
+				
 				if (vsi)
 				{	if (((vn1=="568A")||(vn1=="568B"))&&((vn2=="568A")||(vn1=="568B")))
 					{ msg1="Cable directo con norma";}
@@ -688,7 +696,21 @@
 					msg1="Cable no funciona";
 					msg3="error";
 					}
+				}};
+				if (vcorte==1)
+					{msg2=msg2+"\n"+"Recorte: Muy corto ["+vcorte+" cm]";
+					msg3="warning";
+					}
+				else if ((vcorte>1)&&(vcorte<2.5))
+				{msg2=msg2+"\n"+"Recorte: Correcto ["+vcorte+" cm]";
 				}
+				else
+				{
+				msg2=msg2+"\n"+"Recorte: Muy largo ["+vcorte+" cm]";
+					msg3="warning";
+				}
+					
+				
 				swal(msg1, msg2, msg3);
 			}
 		}	
