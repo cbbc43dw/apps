@@ -628,16 +628,14 @@
 			
 		};	
 		function soniguales()
-		{for (var i = 0; i < 8; i++)
-			{if(vnrm1[i]!=vnrm2[i])
-			{ console.log(i);
-			return false;}
-			else
-			{
-		return true;}}
+		{	for (var i = 0; i < 8; i++)
+			{	if(vnrm1[i]!=vnrm2[i])
+				{ return false;}
+			}
+			return true;
 		};
 		function quenorma(a)
-		{console.log(a);
+		{
 		if ((a[0]=="Blanco-Verde") &&(a[1]=="Verde")&&(a[2]=="Blanco-Naranja")&&(a[3]=="Azul")&&(a[4]=="Blanco-Azul")&&(a[5]=="Naranja")&&(a[6]=="Blanco-Cafe")&&(a[7]=="Cafe"))
 				{return "568A";}
 		else if ((a[0]=="Blanco-Naranja") &&(a[1]=="Naranja")&&(a[2]=="Blanco-Verde")&&(a[3]=="Azul")&&(a[4]=="Blanco-Azul")&&(a[5]=="Verde")&&(a[6]=="Blanco-Cafe")&&(a[7]=="Cafe"))		
@@ -661,14 +659,37 @@
 				swal("Oops!", "!Debes seleccionar el conector RJ45!", "info");
 			}
 			else
-			{ 	var msg="!Cable terminado!";
-				msg=msg+"\n"+(soniguales()?"Puntas iguales.":"Puntas diferentes");
-				console.log(soniguales());
-				msg=msg+"\n"+"Norma Punta 1:"+quenorma(vnrm1);
-				msg=msg+"\n"+"Norma Punta 2:"+quenorma(vnrm2);
+			{ 	var vsi=soniguales();
+				var vn1=quenorma(vnrm1),vn2=quenorma(vnrm2);
+				var msg1="";
+			    var msg2=""+(vsi?"Puntas iguales.":"Puntas diferentes");
+				var msg3="success";
+				var vwrng=0;
+				var verr=0;
+				msg2=msg2+"\n"+"Norma Punta 1:"+vn1;
+				msg2=msg2+"\n"+"Norma Punta 2:"+vn2;
 				
-				
-				swal("Resultado", msg, "success");
+				if (vsi)
+				{	if (((vn1=="568A")||(vn1=="568B"))&&((vn2=="568A")||(vn1=="568B")))
+					{ msg1="Cable directo con norma";}
+					else
+					{
+					msg1="Cable directo sin norma";
+					msg3="warning";
+					}
+					
+				}
+				else
+				{
+				if (((vn1=="568A")&&(vn2=="568B"))||((vn2=="568A")&&(vn1=="568B")))
+					{ msg1="Cable cruzado";}
+					else
+					{
+					msg1="Cable no funciona";
+					msg3="error";
+					}
+				}
+				swal(msg1, msg2, msg3);
 			}
 		}	
 		
