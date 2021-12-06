@@ -439,7 +439,7 @@
 			$("#norma2").css("display", "none");
 			$("#rj45").css("display", "none");
 			
-			//estas lineas no funcionan
+			//Marca verde las selecciones
 			$( "#clst" ).listview( "refresh" );
 			$( "#clst" ).enableSelection();
 			$("#clst li").click(function(){
@@ -467,7 +467,6 @@
 			$(this).css('background-color', selc);
 			}
 			});
-			//
 			instruciones();
 		});
 		function instruciones()
@@ -696,7 +695,7 @@
 					msg1="Cable no funciona";
 					msg3="error";
 					}
-				}};
+				}
 				if (vcorte==1)
 					{msg2=msg2+"\n"+"Recorte: Muy corto ["+vcorte+" cm]";
 					msg3="warning";
@@ -709,8 +708,7 @@
 				msg2=msg2+"\n"+"Recorte: Muy largo ["+vcorte+" cm]";
 					msg3="warning";
 				}
-					
-				
+				};
 				swal(msg1, msg2, msg3);
 			}
 		}	
