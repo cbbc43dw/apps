@@ -5,8 +5,8 @@ if (self.skipWaiting) { self.skipWaiting(); }
     caches.open('cache01').then(function(cache) {
       return cache.addAll([
         './',
-  '.index.html',
-  '.utp.html'
+  './index.html',
+  './utp.html'
   
       ]);
     })
