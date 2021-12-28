@@ -4,7 +4,7 @@ if (self.skipWaiting) { self.skipWaiting(); }
   event.waitUntil(
     caches.open('cache01').then(function(cache) {
       return cache.addAll([
-        './',
+        
   './index.html',
   './utp.html'
   
