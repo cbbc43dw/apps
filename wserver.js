@@ -7,7 +7,7 @@ if (self.skipWaiting) { self.skipWaiting(); }
         
   '/index.html',
   '/utp.html',
-	      '/css/mois-min.css'
+	      './css/mois-min.css'
   
       ]);
     })
