@@ -6,8 +6,7 @@ if (self.skipWaiting) { self.skipWaiting(); }
       return cache.addAll([
         './',
   '.index.html',
-  '.utp.html',
-  './img/inetcbbc.png'
+  '.utp.html'
   
       ]);
     })
