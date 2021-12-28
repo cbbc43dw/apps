@@ -6,7 +6,8 @@ if (self.skipWaiting) { self.skipWaiting(); }
       return cache.addAll([
         
   '/index.html',
-  '/utp.html'
+  '/utp.html',
+	      '/css/mois-min.css'
   
       ]);
     })
