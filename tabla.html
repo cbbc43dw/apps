@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla periodica</title>
+  
+  <style>
+    body
+{
+  background-color:#FDF6EC;
+}
+header
+{
+  background-color:#DAB88B;
+}
+footer
+{
+  background-color:#F3E9DD;
+}
+table {
+  width: 100%;
+  empty-cells:hide;
+}
+td {
+   width: 5%;
+   height: 1.5em;
+   text-align: center;
+   vertical-align: center;
+   border: 2px inset;
+}
+
+td:hover{
+    opacity: 1;
+    transition: all ;
+    visibility: visible;
+ ! background: gold;
+ border-style:outset;
+  
+}
+.sin
+{
+  text-decoration: none;
+}
+.nometal
+{
+  background-color: lime;
+  
+}
+
+.modal-contenido{
+  background-color:#B7CADB;
+  color:#000000;
+  width:300px;
+  padding: 10px 20px;
+  margin: 20% auto;
+  position: relative;
+  border-style:inset;
+   border-radius: 6px;
+}
+.modal{
+  background-color: rgba(0,0,0,.6);
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  opacity:0;
+  pointer-events:none;
+  transition: all 1s;
+}
+:target{
+  opacity:1;
+  pointer-events:auto;
+  border-radius: 8px;
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    Tabla periodica de los elemenotos
+  </header>
+  <main>
+    <table>
+      <tr>
+        <td class="nometal" title="Hidrogeno">
+          <a href="#H" class="sin">H</a> 
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Helio"><a href="#He" class="sin">He</a></td>
+      </tr>
+      <tr>
+        <td title="Litio">Li</td>
+        <td>Be</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>B</td>
+        <td>C</td>
+        <td class="nometal">N</td>
+        <td>O</td>
+        <td>F</td>
+        <td>Ne</td>
+      </tr>
+      <tr>
+        <td>Na</td>
+        <td>Mg</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Al</td>
+        <td>Si</td>
+        <td>P</td>
+        <td>S</td>
+        <td>Cl</td>
+        <td>Ar</td>
+      </tr>
+      <tr>
+        <td>K</td>
+        <td>Ca</td>
+        <td>Sc</td>
+        <td>Ti</td>
+        <td>V</td>
+        <td>Cr</td>
+        <td>Mn</td>
+        <td>Fe</td>
+        <td>Co</td>
+        <td>Ni</td>
+        <td>Cu</td>
+        <td>Zn</td>
+        <td>Ga</td>
+        <td>Ge</td>
+        <td>As</td>
+        <td>Se</td>
+        <td>Br</td>
+        <td>Kr</td>
+      </tr>
+      <tr>
+        <td>Rb</td>
+        <td>Sr</td>
+        <td>Y</td>
+        <td>Zr</td>
+        <td>Nb</td>
+        <td>Mo</td>
+        <td>Tc</td>
+        <td>Ru</td>
+        <td>Rh</td>
+        <td>Pd</td>
+        <td>Ag</td>
+        <td>Cd</td>
+        <td>In</td>
+        <td>Sn</td>
+        <td>Sb</td>
+        <td>Te</td>
+        <td>I</td>
+        <td>Xe</td>
+      </tr>
+      <tr>
+        <td>Cs</td>
+        <td>Ba</td>
+        <td>*</td>
+        <td>Hf</td>
+        <td>Ta</td>
+        <td>W</td>
+        <td>Re</td>
+        <td>Os</td>
+        <td>Ir</td>
+        <td>Pt</td>
+        <td>Au</td>
+        <td>Hg</td>
+        <td>Tl</td>
+        <td>Pb</td>
+        <td>Bi</td>
+        <td>Po</td>
+        <td>At</td>
+        <td>Rn</td>
+      </tr>
+      <tr>
+        <td>Fr</td>
+        <td>Ra</td>
+        <td>@</td>
+        <td>Un</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <td>1</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </main>
+  <footer>
+    Elaborado en la clase de diseño web grupo 603
+  </footer>
+  <!-- Datos de los elementos -->
+    <div id="H" class="modal">
+    <div class="modal-contenido">
+      <h2>Hidrogeno</h2>
+      <hr>
+      <p>Numero atómico: 1</p>
+      <center>
+        <a href="#" title="Salir" class="sin"><h1>&#x1f5f9;</h1></a>
+      </center>
+    </div>
+  </div>
+    <div id="He" class="modal">
+    <div class="modal-contenido">
+      <h2>Helio</h2>
+      <hr>
+      <p>Numero atómico: 2</p>
+      <center>
+        <a href="#" title="Salir" class="sin"><h1>&#x1f5f9;</h1></a>
+      </center>
+    </div>
+  </div>
+
+</body>
+
+</html>
